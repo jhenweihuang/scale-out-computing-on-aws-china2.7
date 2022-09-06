@@ -1059,7 +1059,7 @@ if __name__ == "__main__":
     }), object_hook=lambda d: SimpleNamespace(**d))
 
     # List of AWS endpoints & principals suffix
-    endpoints_suffix = {"fsx_lustre": f"fsx.{core.Aws.REGION}.{core.Aws.URL_SUFFIX}",
+    endpoints_suffix = {"fsx_lustre": f"fsx.{core.Aws.REGION}.{core.Aws.URL_SUFFIX if user_specified_variables.china_region is False else 'amazonaws.com'}",
                         "efs": f"efs.{core.Aws.REGION}.{core.Aws.URL_SUFFIX}"}
 
     principals_suffix = {"backup": f"backup.{core.Aws.URL_SUFFIX if user_specified_variables.china_region is False else 'amazonaws.com'}",
